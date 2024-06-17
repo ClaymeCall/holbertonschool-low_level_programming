@@ -15,7 +15,7 @@ int main(void)
 
 	if (n == 0)
 	{
-		printf("%dÃ is zeo\n", n);
+		printf("%dÃ is zro\n", n);
 	}
 	else if	(n > 0)
 	{
