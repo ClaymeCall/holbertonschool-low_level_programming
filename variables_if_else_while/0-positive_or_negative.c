@@ -15,7 +15,7 @@ int main(void)
 
 	if (n == 0)
 	{
-		printf("%dÃ is zro\n", n);
+		printf("%d is zero\n", n);
 	}
 	else if	(n > 0)
 	{
