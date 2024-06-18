@@ -13,7 +13,7 @@ int main(void)
 	int last_dgt;
 
 	srand(time(0));
-	n = rand() - RAND_MAX / 2u;
+	n = rand() - RAND_MAX / 2;
 	last_dgt = n % 10;
 
 	if (last_dgt > 5)
