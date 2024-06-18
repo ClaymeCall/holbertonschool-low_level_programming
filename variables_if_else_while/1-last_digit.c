@@ -22,7 +22,7 @@ int main(void)
 	{
 		printf("greater than 5\n");
 	}
-	else if (last_digit < 0)
+	else if (last_digit < 5)
 	{
 		printf("less than 6 and not 0\n");
 	}
