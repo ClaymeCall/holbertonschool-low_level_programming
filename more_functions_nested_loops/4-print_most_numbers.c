@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- *print_numbers - print from 0 to 9, than a newline.
+ *print_most_numbers - print from 0 to 9 excepted 2 and 4, than a newline.
  *
  * Return: void
  */
-void print_numbers(void)
+void print_most_numbers(void)
 {
 	char i;
 
