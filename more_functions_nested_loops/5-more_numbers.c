@@ -12,7 +12,7 @@ void more_numbers(void)
 	char tens;
 	char units;
 
-	for (i = 0; i <= 10; i++)
+	for (i = 0; i <= 9; i++)
 	{
 		for (number_to_print = 0; number_to_print <= 14; number_to_print++)
 		{
