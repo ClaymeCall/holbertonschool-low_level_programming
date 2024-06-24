@@ -19,7 +19,7 @@ void more_numbers(void)
 			tens = (number_to_print / 10) + '0';
 			units = (number_to_print % 10) + '0';
 			if (tens > 0)
-				putchar(tens);
+				_putchar(tens);
 			_putchar(units);
 
 		}
