@@ -24,7 +24,7 @@ void print_triangle(int size)
 				_putchar('#');
 			}
 		}
-		if (rowIndex < size)
+		if (rowIndex < size || size == 0)
 			_putchar('\n');
 	}
 }
