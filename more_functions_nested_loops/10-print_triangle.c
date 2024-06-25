@@ -11,11 +11,17 @@ void print_triangle(int size)
 	int rowIndex;
 	int charIndex;
 
-	for (rowIndex = 0; rowIndex <= size; rowIndex++)
+	if (size <= 0)
+	{
+		_putchar('\n');
+		return;
+	}
+
+	for (rowIndex = 0; rowIndex < size; rowIndex++)
 	{
 		for (charIndex = 0; charIndex < size; charIndex++)
 		{
-			if (charIndex < (size - rowIndex))
+			if (charIndex < ((size - 1) - rowIndex))
 			{
 				_putchar(' ');
 			}
@@ -24,7 +30,7 @@ void print_triangle(int size)
 				_putchar('#');
 			}
 		}
-		if (rowIndex < size || size <= 0)
-			_putchar('\n');
+		_putchar('\n');
 	}
 }
+
