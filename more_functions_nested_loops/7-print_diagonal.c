@@ -8,20 +8,19 @@
  */
 void print_diagonal(int n)
 {
-    int rowIndex;
-    int charIndex;
-    
-    
-    for (rowIndex = 1; rowIndex <= n; rowIndex++)
-    {
-            for (charIndex = 0; charIndex < rowIndex; charIndex++)
-            {
-                    if ((charIndex) <= n)
-                        _putchar(' ');
-                    else
-                        _putchar('\\');
-                
-            }
-            _putchar('\n');
-    }
+	int rowIndex;
+	int charIndex;
+
+	for (rowIndex = 0; rowIndex < n; rowIndex++)
+	{
+		for (charIndex = 0; charIndex <= rowIndex; charIndex++)
+		{
+			if (charIndex == rowIndex)
+				_putchar('\\');
+			else
+				_putchar(' ');
+		}
+		_putchar('\n');
+	}
+	return (0);
 }
