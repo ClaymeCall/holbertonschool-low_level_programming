@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  *fizz_buzz - prints 1 to 100 and replaces multiples of 3 or 5 by fizz or buzz.
