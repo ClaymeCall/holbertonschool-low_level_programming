@@ -10,20 +10,21 @@ void print_triangle(int size)
 {
 	int rowIndex;
 	int charIndex;
-        for (rowIndex = 0; rowIndex < n; rowIndex++)
-        {
-                for (charIndex = 0; charIndex < n; charIndex++)
-                {
-                        if (charIndex < (n - rowIndex))
-                        {
-                            putchar(' ');
-                        }
-                        else
-                        {
-                            putchar('#');
-                            putchar('\n');
-                        }
-                }
 
-        }
+	for (rowIndex = 0; rowIndex <= size; rowIndex++)
+	{
+		for (charIndex = 0; charIndex < size; charIndex++)
+		{
+			if (charIndex < (size - rowIndex))
+			{
+				_putchar(' ');
+			}
+			else
+			{
+				_putchar('#');
+			}
+		}
+		if (rowIndex < size)
+			_putchar('\n');
+	}
 }
