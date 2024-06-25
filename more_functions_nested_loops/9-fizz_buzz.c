@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 /**
- *fizz_buzz - prints 1 to 100 and replaces multiples of 3 or 5 by fizz or buzz.
+ *main - prints 1 to 100 and replaces multiples of 3 or 5 by Fizz or Buzz.
  *
  * Return: void
  */
-void fizz_buzz(void)
+int main(void)
 {
 	int i;
 
@@ -21,4 +21,5 @@ void fizz_buzz(void)
 			printf(" ");
 	}
 	printf("\n");
+	return (0);
 }
