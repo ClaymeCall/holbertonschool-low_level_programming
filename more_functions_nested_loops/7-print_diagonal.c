@@ -16,11 +16,17 @@ void print_diagonal(int n)
 		for (charIndex = 0; charIndex <= rowIndex; charIndex++)
 		{
 			if (charIndex == rowIndex)
+			{
 				_putchar('\\');
+				_putchar('\n');
+			}
 			else
 				_putchar(' ');
 		}
+
+	}
+	if (n < 0)
+	{
 		_putchar('\n');
 	}
-	return (0);
 }
