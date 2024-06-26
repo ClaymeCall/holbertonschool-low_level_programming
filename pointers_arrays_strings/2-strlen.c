@@ -7,7 +7,7 @@
  * Return: length of string as integer
  */
 
-void _strlen(char *s)
+int _strlen(char *s)
 {
 	int counter = 0;
 
