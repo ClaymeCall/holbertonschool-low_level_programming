@@ -18,8 +18,8 @@ void puts2(char *str)
 	printf("%d\n", count);
 	while (str[i])
 	{
-		putchar(str[i]);
+		_putchar(str[i]);
 		i += 2;
 	}
-	putchar('\n');
+	_putchar('\n');
 }
