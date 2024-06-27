@@ -15,7 +15,6 @@ void puts2(char *str)
 	while (str[count])
 		count++;
 
-	printf("%d\n", count);
 	while (str[i])
 	{
 		_putchar(str[i]);
