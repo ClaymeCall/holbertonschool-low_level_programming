@@ -20,7 +20,7 @@ char *cap_string(char *s)
 		}
 
 		/* Reset new_word flag if current character is a separator */
-		for (int i = 0; separator_list[i]; i++)
+		for (i = 0; separator_list[i]; i++)
 		{
 			if (*ptr == separator_list[i])
 			{
