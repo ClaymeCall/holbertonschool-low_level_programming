@@ -1,28 +1,27 @@
 #include "main.h"
 
 /**
- * _strncat - concatenates two string up to the n-th character
- * @dest: string to be appended with n characters from src
- * @src: string to concat at the end of dest
- * @n: count of char to concat from string src
+ * _strncpy - Copies a string into another up to the n-th character
+ * @dest: string to be replaced with n characters from src
+ * @src: source string
+ * @n: count of chars
  *
- * Return: char
+ * Return: resulting string as char*
  */
-char *_strncat(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n)
 {
-
 	int i = 0;
-	int j = 0;
 
-	while (dest[i] != 0)
-		i++;
-
-	while (src[j] != 0 && n > j)
+	while (src[i] && i < n)
 	{
-		dest[i] = src[j];
-		j++;
+		dest[i] = src[i];
 		i++;
 	}
 
+	while (dest[i] && i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
 	return (dest);
 }
