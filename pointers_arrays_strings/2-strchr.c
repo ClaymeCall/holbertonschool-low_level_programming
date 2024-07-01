@@ -6,8 +6,8 @@
  *Return: a pointer to the first occurence of c, or NULL if not found.
  */
 char *_strchr(char *s, char c) {
-    while (*s && *s != c) 
-        s++;
+	while (*s && *s != c) 
+        	s++;
 
         return (*s);
 }                
