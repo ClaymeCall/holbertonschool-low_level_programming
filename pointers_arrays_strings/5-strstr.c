@@ -24,6 +24,7 @@ char *_strstr(char *haystack, char *needle)
 	{
 		if (needle[0] == *haystack)
 		{
+			matching_chars++;
 			for (needle[++j]; needle[j]; j++)
 			{
 				if (needle[j] == haystack[j])
