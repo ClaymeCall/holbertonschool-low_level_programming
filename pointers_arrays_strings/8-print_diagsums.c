@@ -5,7 +5,7 @@
  *
  *Return: void
  */
-void print_diagsums(in *a, int size);
+void print_diagsums(int *a, int size);
 {
 	int i = 0
 	int sum1 = 0, sum2 = 0;
