@@ -1,4 +1,3 @@
-#include <main.h>
 /**
  *print_diagsums - prints the sums of two diagonals of a 2D array.
  *@a: 2D array
