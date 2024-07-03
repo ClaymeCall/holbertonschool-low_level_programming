@@ -7,8 +7,8 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i = 0, j = 0;
-	int matching_chars = 0;
+	int i = 0;
+	int counter = 0;
 	int needle_len = 0;
 
 	if (*needle == '\0')
@@ -24,19 +24,19 @@ char *_strstr(char *haystack, char *needle)
 	{
 		if (needle[0] == *haystack)
 		{
-			matching_chars++;
-			for (needle[++j]; needle[j]; j++)
+			counter++;
+			for (needle[counter]; needle[counter]; counter++)
 			{
-				if (needle[j] == haystack[j])
+				if (needle[counter] == haystack[counter])
 				{
-					matching_chars++;
-					if (matching_chars == needle_len - 1)
+					counter++;
+					if (counter == needle_len - 1)
 					{
 						return (haystack);
 					}
 				}
 			}
-			matching_chars = 0;
+			counter = 0;
 		}
 	}
 	return ('\0');
