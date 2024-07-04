@@ -19,11 +19,13 @@ int prime_checker(int n, int i)
  *is_prime_number - Tests if a number is a prime number or not
  *@n: Number to test.
  *
- *Result: 1 if prime, 0 otherwise.
+ *Return: 1 if prime, 0 otherwise.
  */
 int is_prime_number(int n)
 {
 	if (n % 2 == 0)
+		return (0);
+	if (n == 1)
 		return (0);
 	if (n < 0)
 		return (0);
