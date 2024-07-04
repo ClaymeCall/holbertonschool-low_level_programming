@@ -7,7 +7,7 @@
  *
  *Return: 0 if success, 1 if failure, as int.
  */
-int main(int argc, char *argv[1])
+int main(char *argv[1])
 {
 	printf("%s\n", argv[0]);
 	return (0);
