@@ -10,6 +10,7 @@
 char *_strdup(char *str)
 {
 	unsigned int i = 0;
+	char *array;
 
 	if (str == NULL)
 		return (NULL);
@@ -17,7 +18,7 @@ char *_strdup(char *str)
 	while (str[i])
 		i++;
 
-	char *array = (char *)malloc((i + 1) * sizeof(char));
+	array = malloc((i + 1) * sizeof(char));
 
 	if (array == NULL)
 		return (0);
