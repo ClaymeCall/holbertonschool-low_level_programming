@@ -32,7 +32,7 @@ char *str_concat(char *s1, char *s2)
 		{
 			res_str[i] = *s1;
 			s1++;
-			i++
+			i++;
 		}
 	}
 	if (s2)
@@ -41,7 +41,7 @@ char *str_concat(char *s1, char *s2)
 		{
 			res_str[i] = *s2;
 			s2++;
-			i++
+			i++;
 		}
 	}
 
