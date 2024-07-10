@@ -8,10 +8,12 @@
  */
 void *malloc_checked(unsigned int b)
 {
+	void *array;
+
 	if (b == 0)
 		exit(98);
 
-	void *array = malloc(b);
+	*array = malloc(b);
 
 	if (array == NULL)
 		exit(98);
