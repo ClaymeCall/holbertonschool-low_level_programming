@@ -16,10 +16,10 @@ typedef struct dog
 	char *owner;
 } dog;
 
-void init_dog(struct dog *d, char *name, float age, char *owner);
-void print_dog(struct dog *d);
-dog_t *new_dog(char *name, float age, char *owner);
-void free_dog(dog_t *d);
+void init_dog(dog *d, char *name, float age, char *owner);
+void print_dog(dog *d);
+dog *new_dog(char *name, float age, char *owner);  
+void free_dog(dog *d);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 
