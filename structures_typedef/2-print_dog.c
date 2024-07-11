@@ -6,7 +6,7 @@
  *
  *Return: void
  */
-void print_dog(dog *d)
+void print_dog(dog_t *d)
 {
 	if (d == NULL)
 		return;

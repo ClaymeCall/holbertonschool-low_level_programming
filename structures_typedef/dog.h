@@ -9,19 +9,20 @@
  *@age: Age of the dog, as float
  *@owner: Name of the owner, as char *
  *
- *Description:
+ *Description: This file stores all info relative to the data structure dog,
+ *and linked function prototypes.
  */
 typedef struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-} dog;
+} dog_t;
 
-void init_dog(dog *d, char *name, float age, char *owner);
-void print_dog(dog *d);
-dog *new_dog(char *name, float age, char *owner);
-void free_dog(dog *d);
+void init_dog(dog_t *d, char *name, float age, char *owner);
+void print_dog(dog_t *d);
+dog_t *new_dog(char *name, float age, char *owner);
+void free_dog(dog_t *d);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 
