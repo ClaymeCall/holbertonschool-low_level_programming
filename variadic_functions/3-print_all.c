@@ -1,4 +1,4 @@
-#include "variadic_function.c"
+#include "variadic_functions.c"
 
 /**
  *print_all - Function that prints anything, following a format
