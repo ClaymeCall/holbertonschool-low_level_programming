@@ -40,7 +40,7 @@ void print_all(const char * const format, ...)
 				break;
 		}
 
-		if (formatformat[i + 1] != '\0')
+		if (format[i + 1] != '\0')
 			printf("%s", separator);
 		i++;
 	}
