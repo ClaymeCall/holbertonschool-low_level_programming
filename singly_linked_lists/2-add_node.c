@@ -5,7 +5,7 @@
  *@head: Double pointer to the first node.
  *@str: String to be duplicated in the new node.
  *
- *Return: The address of the new node.
+ *Return: The address of the new node or NULL if it failed.
  */
 list_t *add_node(list_t **head, const char *str)
 {
