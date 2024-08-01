@@ -21,7 +21,7 @@ void print_binary(unsigned long int n)
 		mask >>= 1;
 
 	while (mask > 0)
-
+	{
 		if (mask & n)
 			_putchar('1');
 		else
