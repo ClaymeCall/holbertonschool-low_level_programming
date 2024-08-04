@@ -3,10 +3,12 @@
 /**
  *handle_err - Handles several error cases depending on the input error code.
  *@err_code: Error code, as int.
+ *@file_name: Name of the file as const char *.
+ *@fd: File descriptor of the file causing the error, as issize_t.
  *
  *Return: exits before returning, or returns -1
  */
-void handle_err(int err_code, const char *file_name, int fd)
+void handle_err(int err_code, const char *file_name, ssize_t fd)
 {
 	switch (err_code)
 	{
@@ -43,20 +45,26 @@ int cp(const char *file_from, const char *file_to)
 	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_from == -1)
 		handle_err(98, file_from, fd_from);
-	if(fd_to == -1)
+	if (fd_to == -1)
 		handle_err(99, file_to, fd_to);
 
-	while ((ret_read = read(fd_from, buffer, 1024)) != 0)
+	while ((ret_read = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
-		if (ret_read == -1)
-			handle_err(98, file_from, fd_from);
-
 		ret_write = write(fd_to, buffer, ret_read);
 
 		if (ret_write == -1)
+		{
+			close(fd_from);
+			close(fd_to);
 			handle_err(99, file_to, fd_to);
+		}
 	}
-
+	if (ret_read == -1)
+	{
+		close(fd_from);
+		close(fd_to);
+		handle_err(98, file_from, fd_from);
+	}
 	if (close(fd_from) == -1)
 		handle_err(100, NULL, fd_from);
 
@@ -65,7 +73,6 @@ int cp(const char *file_from, const char *file_to)
 
 	return (1);
 }
-
 
 /**
  *main - Entry point
@@ -86,4 +93,3 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
