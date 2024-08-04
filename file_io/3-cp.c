@@ -19,7 +19,7 @@ void handle_err(int err_code, const char *file_name, ssize_t fd)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_name);
 			break;
 		case 100:
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %ld\n", fd);
 			break;
 		default:
 			break;
