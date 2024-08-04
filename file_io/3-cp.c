@@ -4,11 +4,11 @@
  *handle_err - Handles several error cases depending on the input error code.
  *@err_code: Error code, as int.
  *@file_name: Name of the file as const char *.
- *@fd: File descriptor of the file causing the error, as issize_t.
+ *@fd: File descriptor of the file causing the error, as int.
  *
  *Return: exits before returning, or returns -1
  */
-void handle_err(int err_code, const char *file_name, ssize_t fd)
+void handle_err(int err_code, const char *file_name, int fd)
 {
 	switch (err_code)
 	{
@@ -19,7 +19,7 @@ void handle_err(int err_code, const char *file_name, ssize_t fd)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_name);
 			break;
 		case 100:
-			dprintf(STDERR_FILENO, "Error: Can't close fd %ld\n", fd);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 			break;
 		default:
 			break;
@@ -35,7 +35,7 @@ void handle_err(int err_code, const char *file_name, ssize_t fd)
  */
 int cp(const char *file_from, const char *file_to)
 {
-	ssize_t fd_from, fd_to, ret_read, ret_write;
+	int fd_from, fd_to, ret_read, ret_write;
 	char buffer[1024];
 
 	if (file_from == NULL || file_to == NULL)
