@@ -1,20 +1,26 @@
 #include "main.h"
 
 /**
- *err_handler - Handles several error cases depending on the input error code.
+ *handle_err - Handles several error cases depending on the input error code.
  *@err_code: Error code, as int.
  *
- *Return: void
+ *Return: exits before returning, or returns -1
  */
-void err_handler(int err_code)
+int handle_err(int err_code, const char *file_name, int fd)
 {
-	case (err_code)
+	switch (err_code)
 	{
-		case 97:
-			dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-			break;
 		case 98:
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
+			exit(err_code);
+		case 99:
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_name);
+			exit(err_code);
+		case 100:
+			dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", fd);
+			exit(err_code);
+		default:
+			return (-1);
 	}
 }
 
@@ -23,29 +29,36 @@ void err_handler(int err_code)
  *@file_from: Source file.
  *@file_to: Destination file.
  *
- *Return: 1 on success, -1 on failure.
+ *Return: 1 on success, -1 if args are NULL pointers.
  */
 int cp(const char *file_from, const char *file_to)
 {
-	ssize_t fd_from, fd_to;
+	ssize_t fd_from, fd_to, ret_read, ret_write;
+	char *buffer[1024];
 
 	if (file_from == NULL || file_to == NULL)
-		return (-1);
+		exit(-1);
 
-	fd_from = open(filename, O_WRONLY | S_IRUSR | S_IWUSR);
-	fd_to = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	fd_from = open(file_from, O_RDONLY);
+	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_from == -1)
-		return (-98);
+		handle_err(98, file_from, fd_from);
 	if(fd_to == -1)
-		return (-99);
+		handle_err(99, file_to, fd_to);
 
-	if (write(fd, text_content, text_len) == -1)
+	while ((ret_read = read(fd_from, buffer, 1024)) != 0)
 	{
-		close(fd);
-		return (-1);
+		if (ret_read == -1)
+			handle_err(98, file_from, fd_from);
+
+		ret_write = write(fd_to, buffer, ret_read);
+
+		if (ret_write == -1)
+			handle_err(99, file_to, fd_to);
 	}
 
-	close(fd);
+	close(fd_from) == -1 ? (handle_err(100, NULL, fd_from)) : close(fd_from);
+	close(fd_to) == -1 ? (handle_err(100, NULL, fd_to)) : close(fd_to);
 	return (1);
 }
 
@@ -55,10 +68,18 @@ int cp(const char *file_from, const char *file_to)
  *@argc: Count of arguments passed to main
  *@argv: Array of arguments passed to main.
  *
- *Return: 1 on success, -1 on failure.
+ *Return: 0 on success, calls error handler on failure.
  */
 int main(int argc, char *argv[])
 {
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 
+	cp(argv[1], argv[2]);
+
+	return (0);
 }
 
