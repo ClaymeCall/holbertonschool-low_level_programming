@@ -6,24 +6,24 @@
  *
  *Return: exits before returning, or returns -1
  */
-int handle_err(int err_code, const char *file_name, int fd)
+void handle_err(int err_code, const char *file_name, int fd)
 {
 	switch (err_code)
 	{
 		case 98:
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
-			exit(err_code);
+			break;
 		case 99:
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_name);
-			exit(err_code);
+			break;
 		case 100:
-			dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", fd);
-			exit(err_code);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+			break;
 		default:
-			return (-1);
+			break;
 	}
+	exit(err_code);
 }
-
 /**
  *cp - Copies the contents of a file to another file.
  *@file_from: Source file.
@@ -34,7 +34,7 @@ int handle_err(int err_code, const char *file_name, int fd)
 int cp(const char *file_from, const char *file_to)
 {
 	ssize_t fd_from, fd_to, ret_read, ret_write;
-	char *buffer[1024];
+	char buffer[1024];
 
 	if (file_from == NULL || file_to == NULL)
 		exit(-1);
@@ -57,8 +57,12 @@ int cp(const char *file_from, const char *file_to)
 			handle_err(99, file_to, fd_to);
 	}
 
-	close(fd_from) == -1 ? (handle_err(100, NULL, fd_from)) : close(fd_from);
-	close(fd_to) == -1 ? (handle_err(100, NULL, fd_to)) : close(fd_to);
+	if (close(fd_from) == -1)
+		handle_err(100, NULL, fd_from);
+
+	if (close(fd_to) == -1)
+		handle_err(100, NULL, fd_to);
+
 	return (1);
 }
 
